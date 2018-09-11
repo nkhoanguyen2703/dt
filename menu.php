@@ -15,9 +15,9 @@
                 ?>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" >
                     <div class="thumbnail item" style="border:none; z-index: -1;">
-                        <a href="" target="_blank">
+                        <a href="?key=detail.php" target="_blank">
                             <img class="embed-responsive-item animated jello" 
-                            src="images/pizza.jpg" alt="fastfood" style="max-height: 150px;">
+                            src="images/pizza.png" alt="fastfood" style="max-height: 150px;">
                             <div class="caption" style="margin:0px;text-align: center;">
                                 <b>Pizza </b>
                                 <p><?=number_format(245000)?></p>
