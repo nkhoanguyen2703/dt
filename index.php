@@ -6,8 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
@@ -23,7 +22,20 @@
 
 
 <!--NAVBAR-->
-<?php include "navbar.php"; ?>
+<?php 
+error_reporting(E_ERROR | E_PARSE); //hide Warning message
+include "navbar.php"; 
+include "database.php"; 
+include "function.php";
+
+session_start(); 
+if(isset($_SESSION["cart"])==false){
+        $_SESSION["cart"]=array();
+}
+if(isset($_SESSION["combocart"])==false){
+        $_SESSION["combocart"]=array();
+}
+?>
 
 
 
@@ -42,7 +54,7 @@
 
 
 <!-- Footer -->
-<footer class="text-center">
+<footer class="">
   <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>

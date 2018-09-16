@@ -10,7 +10,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="images/ff1.jpg" alt="New York" width="1200" height="700">
+        <img src="images/ff1.jpg"  width="1200" height="700">
         <div class="carousel-caption">
           <h3>DT Fastfood</h3>
           <p>Your best choice</p>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="item">
-        <img src="images/ff2.jpg" alt="Chicago" width="1200" height="700">
+        <img src="images/ff2.jpg"  width="1200" height="700">
         <div class="carousel-caption">
           <h3>DT Fastfood</h3>
           <p>Your best choice</p>
@@ -26,7 +26,7 @@
       </div>
     
       <div class="item">
-        <img src="images/ff3.jpg" alt="Los Angeles" width="1200" height="700">
+        <img src="images/ff3.jpg"  width="1200" height="700">
         <div class="carousel-caption">
           <h3>DT Fastfood</h3>
           <p>Your best choice</p>

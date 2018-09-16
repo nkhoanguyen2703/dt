@@ -6,17 +6,28 @@
     <title>Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"/> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="ckeditor/ckeditor.js"> </script>
+    <!-- <script type="text/javascript" src="ckeditor/ckeditor.js"> </script> -->
    
-    <script>
+    <script language="javascript">
         $(":file").filestyle();
+    
+        function deleteConfirm(){
+            if(confirm("Bạn có chắc chắn muốn xóa!")){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     </script>
+    
 
     <?php
         include "../database.php";
+        include "function.php";
         session_start();
     ?>
 </head>
@@ -33,6 +44,7 @@
     </button>
     <div class="navbar-header">
         <a class="navbar-brand" href="index.php">Admin Page</a>
+        <a class="navbar-brand" href="../index.php">Về trang chủ</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
         <?php
@@ -40,7 +52,9 @@
             ?>
             <ul class="nav navbar-nav">
                 
-                <li><a href="?keyad=add_food.php">Thức ăn</a></li>
+                <li><a href="?keyad=add_food.php">Món ăn</a></li>
+                <li><a href="?keyad=update_status_food.php">Trạng thái món</a></li>
+                <li><a href="?keyad=add_combo.php">Combo</a></li>
                 
             </ul>
         <?php
@@ -56,18 +70,26 @@
 
 
 <div class="container" >
+
+
+
+
+
 <?php
-
-$file="add_food.php";
-if(isset($_GET["keyad"]) && isset($_SESSION['admin'])) //INCLUDE trang vao phan` Content
-{
-    $file=$_GET["keyad"];
-    include $file;
-}else{
-    include "login.php";
+$file="login.php";
+if(isset($_SESSION['admin'])){
+    $file="add_food.php";
+    if(isset($_GET['keyad'])){
+        $file=$_GET['keyad'];
+    }
 }
-
+include $file;
 ?>
+
+
+
+
+
 </div>
 
 

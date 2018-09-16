@@ -11,8 +11,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#myPage">HOME</a></li>
-        <li><a href="#band">BAND</a></li>
-        <li><a href="#tour">TOUR</a></li>
+        <li><a href="?key=test.php">TEST</a></li>
+        <li><a href="?key=cart.php">Giỏ hàng</a></li>
         <li><a href="#contact">CONTACT</a></li>
         <li><a><b>GỌI NGAY: 02923999888</b></a></li>
         <!-- <li class="dropdown">

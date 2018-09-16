@@ -61,7 +61,7 @@ if(isset($_POST['btnAdd_Food'])){
     $tenmon = $_POST['tenmon'];
     $gia = $_POST['gia'];
     $loai = $_POST['loai'];
-    $img="no_image.jpg";
+    $newfilename="no_image.png";
     $date=date("Y/m/d");
 
     $loihinhanh='';
@@ -82,15 +82,9 @@ if(isset($_POST['btnAdd_Food'])){
                         $loihinhanh=$_FILES["photo"]["name"] . " đã tồn tại tên hình này.";
                     } else{
                     	$temp = explode(".", $_FILES["photo"]["name"]);
-                    	echo $temp;
-						// $newfilename = round(microtime(true)) . '.' . end($temp);
-						$newfilename = $nextFoodID . '.' . end($temp);
-						echo "<br>".$newfilename;
-						move_uploaded_file($_FILES["photo"]["tmp_name"], "../images/food/" . $newfilename);
-
-                        // move_uploaded_file($_FILES["photo"]["tmp_name"], "../images/food/" . $_FILES["photo"]["name"].$nextFoodID);
-                        // $img=$_FILES["photo"]["name"];
-                        // echo $img;
+          						// $newfilename = round(microtime(true)) . '.' . end($temp);
+          						$newfilename = $nextFoodID . '.' . end($temp);
+          						move_uploaded_file($_FILES["photo"]["tmp_name"], "../images/food/" . $newfilename);       
                     }
                 } else{
                     echo  $loihinhanh="Lỗi upload hình ảnh";
@@ -102,17 +96,17 @@ if(isset($_POST['btnAdd_Food'])){
     }
     echo $loihinhanh;
 
-    // $sql="insert into thucan values('','$tenmon',$gia,1,'$img',$loai)";
+    $sql="insert into thucan values('','$tenmon',$gia,1,'$newfilename',$loai)";
 
-    // $qr=mysqli_query($db,$sql);
+    $qr=mysqli_query($db,$sql);
 
-    // if($qr){
-    //     echo "<script>alert('Thêm thành công');</script>";
-    //     // echo "<script>window.location='index.php';</script>";
-    //     header("Refresh:0");
-    // }else{
-    //             echo "<script>alert('Thất bại".$loihinhanh."');</script>";
-    // }
+    if($qr){
+        echo "<script>alert('Thêm thành công');</script>";
+        // echo "<script>window.location='index.php';</script>";
+        header("Refresh:0");
+    }else{
+        echo "<script>alert('Thất bại".$loihinhanh."');</script>";
+    }
 
 
 
