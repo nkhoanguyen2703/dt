@@ -6,7 +6,7 @@
     <title>Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"/> -->
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="ckeditor/ckeditor.js"> </script> -->
@@ -54,7 +54,8 @@
                 
                 <li><a href="?keyad=add_food.php">Món ăn</a></li>
                 <li><a href="?keyad=update_status_food.php">Trạng thái món</a></li>
-                <li><a href="?keyad=add_combo.php">Combo</a></li>
+                <li><a href="?keyad=add_combo.php">Tạo combo</a></li>
+                <li><a href="?keyad=quanlydonhang.php">Quản lý đơn hàng</a></li>
                 
             </ul>
         <?php
@@ -62,7 +63,7 @@
         ?>
         <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="signout.php"><span class="glyphicon glyphicon-off"></span> Thoát</a></li>
+            <li><a href="?signoutadmin=1"><span class="glyphicon glyphicon-off"></span> Thoát</a></li>
         </ul>
     </div>
 </div>
@@ -72,18 +73,27 @@
 <div class="container" >
 
 
-
-
-
 <?php
+// error_reporting(E_ERROR | E_PARSE); //hide Warning message
+
 $file="login.php";
 if(isset($_SESSION['admin'])){
-    $file="add_food.php";
+    $file="quanlydonhang.php";
     if(isset($_GET['keyad'])){
         $file=$_GET['keyad'];
     }
 }
 include $file;
+
+
+
+
+
+if(isset($_GET['signoutadmin'])){
+    unset($_SESSION['admin']);
+    echo "<script>window.location='index.php';</script>";
+}
+
 ?>
 
 

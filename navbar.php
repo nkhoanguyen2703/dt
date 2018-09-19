@@ -6,15 +6,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">DT Fastfood</a>
+      <a class="navbar-brand" href="index.php">DT Fastfood</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#myPage">HOME</a></li>
-        <li><a href="?key=test.php">TEST</a></li>
+        <li><a href="index.php">Trang chủ</a></li>
         <li><a href="?key=cart.php">Giỏ hàng</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-        <li><a><b>GỌI NGAY: 02923999888</b></a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+        <li><a><b>Gọi ngay: 02923.999.888</b></a></li>
         <!-- <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
           <span class="caret"></span></a>
@@ -24,7 +23,7 @@
             <li><a href="#">Media</a></li> 
           </ul>
         </li> -->
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+        <li><a href="?key=search.php"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
   </div>

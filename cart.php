@@ -1,4 +1,13 @@
-
+<style>
+	.tamhet{
+        color: red;
+  }
+  .item_goiy{
+  	background-color: white;
+  	margin:auto;
+  	text-align: center;
+  }
+</style>
 
 <div class="container">
 
@@ -35,7 +44,6 @@
 								?>
 
 								<td>
-									
 									<input id="inputSL<?=$foodid?>" type="number" value="<?=$row['soluong']?>" 
 									/>
 									<input id="inputID<?=$foodid?>" type="hidden" value="<?=$row['foodid']?>" 
@@ -159,16 +167,27 @@
 
 		  	while($combo = mysqli_fetch_array($do)){
 		  		$comboid = $combo['combo_ma'];
+		  		$stt = checkComboConHayHet($comboid,$db);
+		  		if($stt==false){ //neu con
+		  			$canbeadded = "?key=cart.php&addcombotocart=$comboid";
+		  		}else{
+		  			$canbeadded ='';
+		  		}
+		  		
 		  	 ?>
 		  		<div class="col-md-6 col-sm-12 " >
-                    <div class="thumbnail item" style="border:1px solid #DDDDDD; z-index: -1;">
-                        <a href="?key=cart.php&addcombotocart=<?=$comboid?>">
+                    <div class="item_goiy item" style="border:1px solid #DDDDDD; z-index: -1;">
+                        <a href="<?=$canbeadded?>	">
                             <img class="embed-responsive-item animated jello" 
                             src="images/combo/<?=$combo['combo_hinhanh']?>" alt="combo" style="max-height: 150px;">
                             <div class="caption" style="margin:0px;text-align: center;">
                                 <b><?=$combo['combo_ten']?></b>
 
                                 <?php 
+                                if($stt==true){
+                                    echo "<span class='tamhet'>Tạm hết</span>";
+                                }
+
                                 $sql2 = "select * from combo cb 
                                 join chitietcombo ct on cb.combo_ma=ct.combo_ma 
                                 join thucan ta on ta.ta_ma=ct.ta_ma
@@ -176,11 +195,14 @@
                                  ";
                                 $qr = mysqli_query($db,$sql2);
                                	while($list = mysqli_fetch_array($qr)){
-                                 echo "<br><i>".$list['ta_ten']."<i>";
+                                 echo "<br><i>".$list['ctcb_soluong']." ".$list['ta_ten']."<i>";
                                  }
+
+                                 
                                 ?>
 
                                 <p><?=number_format($combo['combo_gia'])?></p>
+                                
                             </div>
                         </a>
                     </div>

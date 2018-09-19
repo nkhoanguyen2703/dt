@@ -437,6 +437,11 @@
 		$sql = "delete from combo where combo_ma='$comboid'";
 		$do = mysqli_query($db,$sql);
 		if($do){
+			$img = getComboImageByID($comboid);
+			if($img!='no_image.png'){
+				$link2 = "../images/combo/".$img;
+				unlink($link2);
+			}
 			echo "<script>alert('Đã xóa')</script>";
  			echo "<script>window.location='?keyad=add_combo.php'</script>";
 		}else{

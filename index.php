@@ -54,7 +54,7 @@ if(isset($_SESSION["combocart"])==false){
 
 
 <!-- Footer -->
-<footer class="">
+<footer style="margin-bottom:0px; bottom:0; ">
   <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
