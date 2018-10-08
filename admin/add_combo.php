@@ -189,17 +189,24 @@
 				      <tr>
 				        <th>Tên món</th>
 				        <th>Số lượng</th>
+				        <th>Xóa</th>
 				      </tr>
 				    </thead>
 				    <tbody>
 				      	<?php
 	  					if(isset($_SESSION['addcombo'])){
 				  			foreach($_SESSION["addcombo"] as $key=>$row){
+				  				$mathucan = $row['mathucan'];
 				  				$foodname = getFoodNameByID($row['mathucan']);
-				  				echo "<tr><td>".$foodname."</td><td>".$row['soluong']."</td></tr>";
+				  				echo "<tr>
+					  				<td>".$foodname."</td>
+					  				<td>".$row['soluong']."</td>
+					  				<td><a href='?keyad=add_combo.php&clearFoodInSession=$mathucan'>Xoa</a></td>
+				  				</tr>";
 				  			}
 				  		}	
-		  				?>  
+		  				?>
+
 				    </tbody>
 				</table>
   		</div>
@@ -447,6 +454,12 @@
 		}else{
  			echo "<script>alert('Xóa thất bại')</script>";
  		}
+	}
+
+	if(isset($_GET['clearFoodInSession'])){
+		$id = $_GET['clearFoodInSession'];
+		unset($_SESSION['addcombo'][$id]); 
+		echo "<script>window.location='?keyad=add_combo.php'</script>";
 	}
  ?>
 

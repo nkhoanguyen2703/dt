@@ -6,6 +6,7 @@
   	background-color: white;
   	margin:auto;
   	text-align: center;
+  	cursor: pointer;
   }
 </style>
 
@@ -153,14 +154,22 @@
 		  <div class="panel-body">
 		  	<?php 
 		  	$sql = '';
+		  	$tmp = '';
 			foreach($_SESSION["cart"] as $key=>$row){
 						$id = $row['foodid'];
-						$tmp = "select * from combo cb  
-						join chitietcombo ct on ct.combo_ma=cb.combo_ma
-						where ct.ta_ma='".$row['foodid']."' UNION DISTINCT ";
-						$sql = $sql.$tmp;
+						// $tmp = "select * from combo cb  
+						// join chitietcombo ct on ct.combo_ma=cb.combo_ma
+						// where ct.ta_ma='".$row['foodid']."' UNION DISTINCT ";
+						// $sql = $sql.$tmp;
+						$tmp = $tmp."OR ct.ta_ma=$id ";
 			}
-			$sql = rtrim($sql, "UNION DISTINCT");
+			$tmp = ltrim($tmp, "OR");
+			$sql = "select DISTINCT cb.combo_ma,cb.combo_hinhanh,cb.combo_gia from combo cb  
+						join chitietcombo ct on ct.combo_ma=cb.combo_ma
+						where ".$tmp;
+			// $sql = rtrim($sql, "UNION DISTINCT");
+			// $sql = $sql." GROUP BY cb.combo_ma";
+			echo $sql;
 		  	$do = mysqli_query($db,$sql);
 		  	if($do){
 

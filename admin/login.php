@@ -26,10 +26,10 @@
 <div class="container"  >
 <div class="row" style="margin: auto;">
  
-  <div class="" style="margin: auto;">
+  <div class="" style="margin: 0;">
 
         <form method="POST">
-                <div class="modal-dialog" style="margin-top: 10%;">
+                <div class="modal-dialog" style="margin-top: -10%;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <H3 class="text-center">ĐĂNG NHẬP TRANG QUẢN TRỊ </h3>

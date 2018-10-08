@@ -43,9 +43,11 @@ if(isset($_SESSION["combocart"])==false){
 
 <?php
   $page = "homepage.php";
+
   if(isset($_GET['key'])){
     $page=$_GET['key'];
   }
+  
   include $page;
 ?>
 
