@@ -5,6 +5,11 @@
 </style>
 <div class="panel panel-default">
   <div class="panel-body">
+  <?php 
+  // $foodid = "19";
+  // $fud = getFoodImageByID($foodid);
+  // echo "Fud: ".$fud;
+   ?>
   	<h2>Cập nhật trạng thái món ăn</h2>
   	
   		<div class="col-md-2">
@@ -352,17 +357,20 @@
 			$xoacombo = "DELETE FROM combo where combo_ma=$comboid";
 			$do2 = mysqli_query($db,$xoacombo);
 		}
-
+		$foodimg = getFoodImageByID($foodid);//lay hinh truoc khi xoa khoi CSDL
 		$xoafood = "DELETE FROM thucan where ta_ma=$foodid";
 		$do3 = mysqli_query($db,$xoafood);
 
 		if($do3){
-			$foodimg = getFoodImageByID($foodid);
+			
+			
 			if($foodimg!='no_image.png'){
+				
 				$link2 = "../images/food/".$foodimg;
 				unlink($link2);
+				
 			}
-			echo "<script>alert('Đã xóa');window.location='?keyad=update_status_food.php';</script>";
+		    echo "<script>alert('Đã xóa');window.location='?keyad=update_status_food.php';</script>";
 		}else{
 			echo "<script>alert('Lỗi xóa món ăn 003xx');window.location='?keyad=update_status_food.php';</script>";
 		}

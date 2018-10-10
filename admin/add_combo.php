@@ -189,24 +189,34 @@
 				      <tr>
 				        <th>Tên món</th>
 				        <th>Số lượng</th>
+				        <th>Giá</th>
 				        <th>Xóa</th>
 				      </tr>
 				    </thead>
 				    <tbody>
 				      	<?php
+				      	$tong = 0;
 	  					if(isset($_SESSION['addcombo'])){
 				  			foreach($_SESSION["addcombo"] as $key=>$row){
 				  				$mathucan = $row['mathucan'];
+				  				$gia = getGiaTienByMa($mathucan);
 				  				$foodname = getFoodNameByID($row['mathucan']);
 				  				echo "<tr>
 					  				<td>".$foodname."</td>
 					  				<td>".$row['soluong']."</td>
+					  				<td>".$gia*$row['soluong']."</td>
 					  				<td><a href='?keyad=add_combo.php&clearFoodInSession=$mathucan'>Xoa</a></td>
 				  				</tr>";
+
+				  				$tong += $gia*$row['soluong'];
 				  			}
 				  		}	
+				  		
 		  				?>
 
+		  				<tr>
+		  					<td conspan="4"><b>Tổng giá: <?=$tong?></b></td>
+		  				</tr>
 				    </tbody>
 				</table>
   		</div>
@@ -327,7 +337,7 @@
  		$newfilename="no_image.png";
  		$loihinhanh='';
  		if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
-	        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+	        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png", "JPG"=>"image/jpg");
 	        $filename = $_FILES["photo"]["name"];
 	        $filetype = $_FILES["photo"]["type"];
 	        $filesize = $_FILES["photo"]["size"];

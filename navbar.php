@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -14,6 +15,16 @@
         <li><a href="?key=cart.php">Giỏ hàng</a></li>
         <li><a href="#contact">Liên hệ</a></li>
         <li><a><b>Gọi ngay: 02923.999.888</b></a></li>
+        <li><a>
+
+        <?php 
+        if(isset($_SESSION['admin'])){
+          $ten = getTenNVbyID($_SESSION['admin'],$db);
+          echo $ten;
+         } 
+         ?>
+        </a>
+        </li>
         <!-- <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
           <span class="caret"></span></a>

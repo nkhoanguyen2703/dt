@@ -1,6 +1,12 @@
 <?php
 	
-
+	function getGiaTienByMa($mathucan){
+		include "../database.php";
+		$sql="select * from thucan where ta_ma='$mathucan'";
+		$do = mysqli_query($db,$sql);
+		$food = mysqli_fetch_array($do);
+		return $food['ta_gia'];
+	}
 	function getFoodNameByID($mathucan){
 		include "../database.php";
 		$sql="select * from thucan where ta_ma='$mathucan'";
@@ -46,12 +52,13 @@
 
 	function getFoodImageByID($id){
 		include "../database.php";
-		$sql = "select * from thucan where ta_ma='$id'";
-		$do = mysqli_query($db,$sql);
-		$result = mysqli_fetch_array($do);
+		$sql2 = "select * from thucan where ta_ma='$id'";
+		$do2 = mysqli_query($db,$sql2);
+		$result = mysqli_fetch_array($do2);
 		$img = $result['ta_hinhanh'];
 		return $img;
 	}
+	 // echo getFoodImageByID(25);
 	function getComboImageByID($id){
 		include "../database.php";
 		$sql = "select * from combo where combo_ma='$id'";

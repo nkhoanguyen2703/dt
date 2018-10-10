@@ -100,7 +100,8 @@
 				$sql="select * from donhang dh
 				join khachhang kh on dh.kh_ma=kh.kh_ma
 				where trangthai=1
-				ORDER BY thoigian DESC LIMIT 0,20";
+				ORDER BY thoigian DESC 
+				LIMIT 0,20";
 				$do = mysqli_query($db,$sql);
 				while($dh = mysqli_fetch_array($do)){
 					$madonhang = $dh['dh_ma'];

@@ -51,12 +51,69 @@
 	  <button type="submit" name="btnAdd_Food" class="btn btn-default">Submit</button>
 	</form>
 
+
+  <hr>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên món</th>
+        <th>Giá</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <?php  
+      $sql = "select * from thucan";
+      $do = mysqli_query($db,$sql);
+      while($food = mysqli_fetch_array($do)){
+      ?>
+      <tr>
+        <td><?=$food['ta_ma']?></td>
+        <td><?=$food['ta_ten']?></td>
+        <td>
+
+          <form action="" method="POST">
+            <div class="input-group">
+              <input type="hidden" name="ma" value="<?=$food['ta_ma']?>">
+              <input type="text" class="form-control" name="gia" placeholder="<?=$food['ta_gia']?>" >
+              <div class="input-group-btn">
+                <button class="btn btn-default" name="capnhatgia" type="submit"><i class="glyphicon glyphicon-edit"></i></button>
+              </div>
+            </div>
+          </form>
+
+        </td>
+      </tr>
+      <?php } ?>
+     
+    </tbody>
+  </table>
+
+
+
   </div>
 </div>
 
 
 
 <?php
+//capnhatgia
+if(isset($_POST['capnhatgia'])){
+  $gia = $_POST['gia'];
+  $ma = $_POST['ma'];
+  $sql = "update thucan set ta_gia=$gia where ta_ma=$ma";
+  $do = mysqli_query($db,$sql);
+  if($do){
+    echo "<script>alert('Cập nhật thành công');window.location='?keyad=add_food.php';</script>";
+  }else{
+    echo "<script>alert('Lỗi cập nhật giá');</script>";
+  }
+}
+
+
 if(isset($_POST['btnAdd_Food'])){
     $tenmon = $_POST['tenmon'];
     $gia = $_POST['gia'];
@@ -65,8 +122,9 @@ if(isset($_POST['btnAdd_Food'])){
     $date=date("Y/m/d");
 
     $loihinhanh='';
+
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
-        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png", "JPG" => "image/jpg");
         $filename = $_FILES["photo"]["name"];
         $filetype = $_FILES["photo"]["type"];
         $filesize = $_FILES["photo"]["size"];

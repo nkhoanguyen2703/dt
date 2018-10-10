@@ -24,17 +24,21 @@
 <!--NAVBAR-->
 <?php 
 error_reporting(E_ERROR | E_PARSE); //hide Warning message
+include "function.php";
 include "navbar.php"; 
 include "database.php"; 
-include "function.php";
+
 
 session_start(); 
+
 if(isset($_SESSION["cart"])==false){
         $_SESSION["cart"]=array();
 }
+
 if(isset($_SESSION["combocart"])==false){
         $_SESSION["combocart"]=array();
 }
+
 ?>
 
 
@@ -42,6 +46,7 @@ if(isset($_SESSION["combocart"])==false){
 
 
 <?php
+
   $page = "homepage.php";
 
   if(isset($_GET['key'])){
@@ -49,6 +54,7 @@ if(isset($_SESSION["combocart"])==false){
   }
   
   include $page;
+
 ?>
 
 

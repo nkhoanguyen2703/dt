@@ -74,4 +74,11 @@
 			return false;
 		} 
 	}
+
+	function getTenNVbyID($id,$db){
+		$sql = "select nv_ten from nhanvien where nv_ma='$id'";
+		$do = mysqli_query($db,$sql);
+		$nv = mysqli_fetch_array($do);
+		return $nv[0];
+	}
 ?>
